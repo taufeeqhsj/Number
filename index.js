@@ -3,7 +3,6 @@ export default {
     const url = new URL(request.url);
     const targetUrl = `https://api.telegram.org${url.pathname}${url.search}`;
     
-    // Headers copy karo aur Host header fix karo
     const newHeaders = new Headers(request.headers);
     newHeaders.set('Host', 'api.telegram.org');
     
@@ -13,7 +12,6 @@ export default {
       redirect: 'follow'
     };
     
-    // Bina data freeze kiye direct stream forward karo
     if (request.method !== 'GET' && request.method !== 'HEAD') {
       init.body = request.body;
     }
@@ -21,4 +19,3 @@ export default {
     return fetch(targetUrl, init);
   }
 };
-  
